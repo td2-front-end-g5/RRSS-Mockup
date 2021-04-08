@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <title>Bienvenidos a DL-Alumnos</title>
+
+    <!-- Required Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+    <!-- Required scripts -->
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <!-- Our application root element -->
+    <div id="app">
+        <b-container class="logoLogin">
+            <h1>Logo</h1>
+        </b-container>
+        <b-container class=" d-flex justify-content-md-center">
+                <div class="login">
+                    <div class="centrarbtn">
+                        <p>Inicia sesión con</p>
+                        <b-button type="submit" variant="outline-dark"><b-icon-google></b-icon-google>  <b>Google</b></b-button>
+                    </div>
+                    <hr>
+                    <p class="centrartxt">Iniciar sesión con credencial</p>
+                    
+                    <b-form>
+                        <b-form-group>
+                            <b-form-input type="email" placeholder="Tu correo electrónico"></b-input-group>
+                        </b-form-group>
+                        <b-form-group>
+                            <b-form-input type="password" placeholder="Tu contraseña">
+                            </b-form-input>
+                        </b-form-group>
+                        <b-row>
+                            <b-col cols="5">
+                                <a href="inicio.html"><b-button variant="primary">Iniciar Sesión</b-button></a>
+                            </b-col>
+                            <b-col cols="7" style="text-align: right">
+                                <a href="#">Creo que olvidé mi contraseña</a>
+                            </b-col>
+                        </b-row>
+    
+                    </b-form>
+                </div>           
+        </b-container>
+    </div>
+
+    <!-- Start running your app -->
+    <script>
+        window.app = new Vue({
+            el: '#app',
+            data: {
+                name: ''
+            },
+            computed: {
+                showAlert() {
+                    return this.name.length > 4 ? true : false
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
