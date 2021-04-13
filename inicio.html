@@ -1,529 +1,690 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
+    <title>Title</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Bienvenidos a DL-Alumnos</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <!-- Required Stylesheets -->
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
-    <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
-    <!-- Required scripts -->
-    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Our application root element -->
-    <div id="app">
-        <!--Sidebar (Opciones de navegacion)-->
-        <template>
-            <div>
-                <!--NAVBAR-->
-                <b-navbar toggleable="lg" type="dark" variant="dark">
-                    <b-button v-b-toggle.sidebar-no-header>
-                        <b-icon-menu-down scale="1"></b-icon-menu-down>
-                    </b-button>
-                    <b-collapse id="nav-collapse" is-nav>
-                        <!-- Right aligned nav items -->
-                        <b-navbar-nav class="margin-left-nav">
-                            <b-nav-item-dropdown right>
-                                <!-- Using 'button-content' slot -->
-                                <template #button-content>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="10%"
-                                        class="imgUsu">
-                                    <em>Hola! Alejandro</em>
-                                </template>
-                                <b-dropdown-item href="perfil.html">Mi Perfil</b-dropdown-item>
-                                <b-dropdown-item href="index.html">Cerrar Sesión</b-dropdown-item>
-                            </b-nav-item-dropdown>
-                        </b-navbar-nav>
-                    </b-collapse>
-                </b-navbar>
-                <!--FIN NAVBAR-->
-                <div>
-                    <b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" no-header shadow>
-                        <template #default="{ hide }">
-                            <div class="p-3">
-                                <div class="centrar">
-                                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
-                                    <div class="mt-3">
-                                        <h5>Alejandro Almonacid</h5>
-                                        <p>G5 - Front End Dev</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <nav class="mb-3">
-                                    <b-nav vertical>
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Usuarios</b-nav-item>
-                                        <!--Usuarios: Roles
-                                Empresa: Publicar avisos de pega (CRUD DE AVISO)
-                                Invitado: Solo puede leer blog y publicaciones en general
-                                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
-                                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
-                                -->
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Publicaciones</b-nav-item>
-                                        <!--
-                                    Publicaciones: 
-                                    Muro
-                                    Blog
-                                    Marketplace
-                                    Avisos de pega
-                                    Sec. Distracción
-                                -->
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Noticias</b-nav-item>
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Eventos</b-nav-item>
-                                        <b-nav-item href="inicio.html" @click="hide">Inicio</b-nav-item>
-                                        <b-nav-item href="saladeclase.html" @click="hide">Sala de Clases</b-nav-item>
-                                        <b-nav-item href="blog.html" @click="hide">Noticias/Eventos</b-nav-item>
-                                        <b-nav-item href="#link-2" @click="hide">Foro</b-nav-item>
-                                        <b-nav-item href="#link-2" @click="hide">Avisos</b-nav-item>
-                                        <b-nav-item href="#link-2" @click="hide">Marketplace</b-nav-item>
-                                    </b-nav>
-                                </nav>
-                                <b-button variant="primary" block @click="hide">Cerrar Menú</b-button>
-                            </div>
-                        </template>
-                    </b-sidebar>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="p-3">
+                <div class="centrar">
+                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
+                    <div class="mt-3">
+                        <h5>[usu_nombre] [usu_apellido]</h5>
+                        <p>[usu_gen_curso]</p>
+                    </div>
                 </div>
+                <hr>
+                <nav class="mb-3">
+                    <ul>
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Usuarios</li>
+                        </a>
+                        <!--Usuarios: Roles
+                Empresa: Publicar avisos de pega (CRUD DE AVISO)
+                Invitado: Solo puede leer blog y publicaciones en general
+                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
+                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
+                -->
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Publicaciones</li>
+                        </a>
+                        <!--
+                    Publicaciones: 
+                    Muro
+                    Blog
+                    Marketplace
+                    Avisos de pega
+                    Sec. Distracción
+                -->
+                        <a href="">
+                            <li>Administrar Noticias</li>
+                        </a>
+                        <a href="">
+                            <li>Administrar Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Inicio</li>
+                        </a>
+                        <a href="">
+                            <li>Sala de Clases</li>
+                        </a>
+                        <a href="">
+                            <li>Noticias/Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Foro</li>
+                        </a>
+                        <a href="">
+                            <li>Avisos</li>
+                        </a>
+                        <a href="">
+                            <li>Marketplace</li>
+                        </a>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Cerrar Menú</button>
             </div>
-            <!--FIN NAVBAR-->
-            <!--PAGINA DE INICIO
-            
-            1) Publicaciones hechas por los usuario (Muro) lado derecho
-            en el muro podrá ver publicaciones igual que el usuario, con la opcion extra de poder eliminar dicha publicacion
+        </nav>
 
-            ejemplo:
-            footer de la publicacion, existirá lo siguiente
-            Reacciones - Comentarios (v-if v-else) - Deshabilitar comentarios (v-if v-else) - Eliminar publicación
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
 
-            ésto existirá igual, en los comentarios de la publicación
-            Reacción - Responder - Borrar Comentario
-
-            2) 
-            -->
-            <div class="fondo">
-                <b-container fluid>
-                    <b-row>
-                        <b-col xl="3" lg="4" md="12" sm="12" cols="12" class="secpriv">
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Próximo Evento</h3>
-                                </label>
-                                <div>
-                                    <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                                        tag="article" style="max-width: 20rem;" class="mb-2">
-                                        <b-card-text>
-                                            <h2>Titulo Evento</h2>
-                                            <p>Resumen</p>
-                                        </b-card-text>
-                                        <b-card-footer >
-                                            <a href="">Ir a Evento</a>
-                                        </b-card-footer>
-
-                                    </b-card>
-                                </div>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
                             </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
 
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Avisos de empleo</h3>
-                                </label>
-                                <b-button v-b-toggle.collapse-1 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-1" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-2 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-2" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-3 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-3" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-4 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-4" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-5 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-5" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                
-                                <div style="padding: 5%;">
-                                    <a href="empleos.html"><b-button variant="warning" style="width: 100%;">Ver todas las ofertas</b-button></a>
-                                </div>
-                            </div>
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Playlist de la semana</h3>
-                                </label>
-                                <div>
-                                    <iframe src="https://open.spotify.com/embed/playlist/1rEzcCeI7JC2SDEy7FycJL"
-                                        width="100%" height="330" frameborder="0" allowtransparency="true"
-                                        allow="encrypted-media"></iframe>
-                                </div>
-                            </div>
-                        </b-col>
-                        <b-col xl="9" lg="8" md="12" sm="12" cols="12">
-                            <h2 class="tituloInicio">Hola! [Usuario] </h2>
-                            <div class="fondopublicacion altura">
-                                <!--Publicacion Solo texto-->
-                                <div class="crearpub py-5">
+            <!--NAVS TERMINADOS-->
 
-                                    <b-row class="mx-5">
-                                        <b-col xl="2" lg="2" md="2" sm="2" cols="2">
-                                            <img class="imgusupub"
-                                                src="https://electronicssoftware.net/wp-content/uploads/user.png"
-                                                width="100%">
-                                        </b-col>
-                                        <b-col xl="10" lg="10" md="10" sm="10" cols="10">
-                                            <b-form-textarea rows="3" max-rows="5" class="formpublicacion" type="text"
-                                                placeholder="¿Qué estás pensando, Alejandro"></b-form-textarea>
-                                            <div v-if="img == true">
-                                                <b-input-group prepend="URL de imagen" class="mb-2">
-                                                    <b-form-input placeholder="https://url.dominio/path.jpg">
-                                                    </b-form-input>
-                                                </b-input-group>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 px-5">
+                        <div class="publicacion px-5 py-2">
+                            <h2 class="centrar">Noticias Principales</h2>
+                            <hr>
+                            <p>
+                                <a class="btn btn-primary anchobtn" data-toggle="collapse" href="#noticia1"
+                                    role="button" aria-expanded="false" aria-controls="noticia1">
+                                    [aviso_titulo]
+                                </a>
+                            </p>
+                            <div class="collapse" id="noticia1">
+                                <div class="card bg-primary text-white" style="padding: 1rem;">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-4"><img
+                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
+                                                    width="100%"></div>
+                                            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8"><b>Nombre de
+                                                    Empresa</b><br>
+                                                <p>Santiago, Chile</p>
                                             </div>
-                                            <b-button class="btnPublicar" variant="primary">Publicar</b-button>
-                                            <b-button v-if="img==false" class="btnPublicarFoto" variant="success"
-                                                @click="cargarIMG()">Subir Foto</b-button>
-                                            <b-button v-else class="btnPublicarFoto" variant="danger"
-                                                @click="nocargarIMG()">No subir Foto</b-button>
-
-                                        </b-col>
-                                    </b-row>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                <p>Prestigiosa empresa busca programador junior con 4 años de
+                                                    experiencia.
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                                                <p>$350.000</p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">[Evaluación]</div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"><kbd
+                                                    class="taghtml5">HTML5</kbd> <kbd class="tagvuejs">VueJs</kbd> <kbd
+                                                    class="tagjs">JavaScript</kbd> <kbd
+                                                    class="tagfirebase">Firebase</kbd> <kbd class="tagscss">SCSS</kbd>
+                                                <kbd class="tagithub">Github</kbd>
+                                            </div>
+                                        </div>
+                                        <footer style="padding: 10% 0% 0%;"><button type="button" class="btn btn-light"
+                                                style="width: 100%;">Ver Oferta</button></footer>
+                                    </div>
+                                    <!---->
+                                    <!---->
                                 </div>
-                                <b-row>
-                                    <b-col xl="6" lg="12" md="12" sm="12" cols="12">
-                                        <b-card class="publicacion">
-                                            <b-card-header>
-                                                <b-row>
-                                                    <b-col xl="4" lg="6" md="2" sm="6" cols="6">
-                                                        <img src="https://electronicssoftware.net/wp-content/uploads/user.png"
-                                                            width="75px">
-                                                    </b-col>
-                                                    <b-col xl="8" lg="6" md="10" sm="6" cols="6" class="nompub">
-                                                        <h5>Alejandro Almonacid</h5>
-                                                        <p>Gen 5 Front-End Dev</p>
-                                                    </b-col>
-                                                </b-row>
-                                            </b-card-header>
-                                            <small class="text-muted pl-3">Last updated 3 mins ago</small>
-                                            <b-card-text class="px-5 py-2">
-                                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-                                                    velit nisi molestiae distinctio ea iste neque dolore voluptatem
-                                                    hic et explicabo voluptate, magnam quam laboriosam laudantium
-                                                    placeat harum aut voluptas?</h6>
-                                            </b-card-text>
-                                            <b-card-footer class="fondocardfooter">
-                                                <b-button-group class="btngrupito">
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-hand-thumbs-up variant="primary">
-                                                        </b-icon-hand-thumbs-up> Me gusta
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-chat-square-text variant="success">
-                                                        </b-icon-chat-square-text> Comentar
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-eye-slash-fill variant="warning">
-                                                        </b-icon-eye-slash-fill> Deshabilitar
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-trash-fill variant="danger"></b-icon-trash-fill>Eliminar
-                                                    </b-button>
-                                                </b-button-group>
-                                            </b-card-footer>
-                                        </b-card>
-                                    </b-col>
-                                    <b-col xl="6" lg="12" md="12" sm="12" cols="12">
-                                        <b-card class="publicacion">
-                                            <b-card-header>
-                                                <b-row>
-                                                    <b-col xl="4" lg="6" md="2" sm="6" cols="6">
-                                                        <img src="https://electronicssoftware.net/wp-content/uploads/user.png"
-                                                            width="75px">
-                                                    </b-col>
-                                                    <b-col xl="8" lg="6" md="10" sm="6" cols="6" class="nompub">
-                                                        <h5>Alejandro Almonacid</h5>
-                                                        <p>Gen 5 Front-End Dev</p>
-                                                    </b-col>
-                                                </b-row>
-                                            </b-card-header>
-                                            <small class="text-muted pl-3">Last updated 3 mins ago</small>
-                                            <b-card-text class="px-5 py-2">
-                                                <h3>Lindo mi papi ♥</h3>
-                                            </b-card-text>
-                                            <b-card-img
-                                                src="https://www.milenio.com/uploads/media/2020/06/28/cantante-celebro-redes-sociales-instagram_100_18_874_544.jpg"
-                                                alt="Image" bottom></b-card-img>
+                            </div>
+                            <div style="padding: 5%;">
+                                <a href="empleos.html">
+                                    <button type="button" class="btn btn-warning" style="width: 100%;">
+                                        Ver blog
+                                    </button></a>
+                            </div>
+                        </div>
 
-                                            <b-card-footer class="fondocardfooter">
-                                                <b-button-group class="btngrupito">
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-hand-thumbs-up variant="primary">
-                                                        </b-icon-hand-thumbs-up> Me gusta
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-chat-square-text variant="success">
-                                                        </b-icon-chat-square-text> Comentar
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-eye-slash-fill variant="warning">
-                                                        </b-icon-eye-slash-fill> Deshabilitar
-                                                    </b-button>
-                                                    <b-button class="btncomentario">
-                                                        <b-icon-trash-fill variant="danger"></b-icon-trash-fill>Eliminar
-                                                    </b-button>
-                                                </b-button-group>
-                                            </b-card-footer>
-                                            <b-card-body>
+                        <div class="publicacion px-5 py-2">
+                            <h2 class="centrar">Próximo Evento</h2>
+                            <hr>
+                            <p>
+                                <a class="btn btn-primary anchobtn" data-toggle="collapse" href="#evento1"
+                                    role="button" aria-expanded="false" aria-controls="evento1">
+                                    [aviso_titulo]
+                                </a>
+                            </p>
+                            <div class="collapse" id="evento1">
+                                <div class="card bg-primary text-white" style="padding: 1rem;">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-4"><img
+                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
+                                                    width="100%"></div>
+                                            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8"><b>Nombre de
+                                                    Empresa</b><br>
+                                                <p>Santiago, Chile</p>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                <p>Prestigiosa empresa busca programador junior con 4 años de
+                                                    experiencia.
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                                                <p>$350.000</p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">[Evaluación]</div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"><kbd
+                                                    class="taghtml5">HTML5</kbd> <kbd class="tagvuejs">VueJs</kbd> <kbd
+                                                    class="tagjs">JavaScript</kbd> <kbd
+                                                    class="tagfirebase">Firebase</kbd> <kbd class="tagscss">SCSS</kbd>
+                                                <kbd class="tagithub">Github</kbd>
+                                            </div>
+                                        </div>
+                                        <footer style="padding: 10% 0% 0%;"><button type="button" class="btn btn-light"
+                                                style="width: 100%;">Ver Oferta</button></footer>
+                                    </div>
+                                    <!---->
+                                    <!---->
+                                </div>
+                            </div>
+                            <div style="padding: 5%;">
+                                <a href="empleos.html">
+                                    <button type="button" class="btn btn-warning" style="width: 100%;">
+                                        Ver todos los eventos
+                                    </button></a>
+                            </div>
+                        </div>
+
+                        <div class="publicacion px-5 py-2">
+                            <h2 class="centrar">Ofertas laborales</h2>
+                            <hr>
+                            <p>
+                                <a class="btn btn-primary anchobtn" data-toggle="collapse" href="#oferta_laboral1"
+                                    role="button" aria-expanded="false" aria-controls="oferta_laboral1">
+                                    [aviso_titulo]
+                                </a>
+                            </p>
+                            <div class="collapse" id="oferta_laboral1">
+                                <div class="card bg-primary text-white" style="padding: 1rem;">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-4"><img
+                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
+                                                    width="100%"></div>
+                                            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8"><b>Nombre de
+                                                    Empresa</b><br>
+                                                <p>Santiago, Chile</p>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                <p>Prestigiosa empresa busca programador junior con 4 años de
+                                                    experiencia.
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                                                <p>$350.000</p>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">[Evaluación]</div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"><kbd
+                                                    class="taghtml5">HTML5</kbd> <kbd class="tagvuejs">VueJs</kbd> <kbd
+                                                    class="tagjs">JavaScript</kbd> <kbd
+                                                    class="tagfirebase">Firebase</kbd> <kbd class="tagscss">SCSS</kbd>
+                                                <kbd class="tagithub">Github</kbd>
+                                            </div>
+                                        </div>
+                                        <footer style="padding: 10% 0% 0%;"><button type="button" class="btn btn-light"
+                                                style="width: 100%;">Ver Oferta</button></footer>
+                                    </div>
+                                    <!---->
+                                    <!---->
+                                </div>
+                            </div>
+                            <div style="padding: 5%;">
+                                <a href="empleos.html">
+                                    <button type="button" class="btn btn-warning" style="width: 100%;">
+                                        Ver todas las ofertas
+                                    </button></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--MURO-->
+                    <div class="col-lg-9">
+                        <!--Caja de publicacion-->
+                        <div class="crearpub py-5 mx-5">
+                            <div class="row mx-5">
+                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                        src="https://electronicssoftware.net/wp-content/uploads/user.png" width="100%"
+                                        class="imgusupub"></div>
+                                <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 col-10"><textarea
+                                        placeholder="¿Qué estás pensando, Alejandro" wrap="soft"
+                                        class="formpublicacion form-control" type="text"
+                                        style="resize: none; overflow-y: scroll; height: 86px;"
+                                        id="__BVID__37"></textarea>
+                                    <button type="button" class="btn btnPublicar btn-primary">Publicar</button>
+                                    <button type="button" class="btn btnPublicarFoto btn-success">Subir Foto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fondopublicacion altura">
+
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="card publicacion">
+
+                                        <div class="card-body">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-2 col-lg-6 col-xl-4 col-6"><img
+                                                            src="https://electronicssoftware.net/wp-content/uploads/user.png"
+                                                            width="75px"></div>
+                                                    <div class="nompub col-sm-6 col-md-10 col-lg-6 col-xl-8 col-6">
+                                                        <h5>Alejandro Almonacid</h5>
+                                                        <p>Gen 5 Front-End Dev</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <small class="text-muted pl-3">Last updated 3 mins ago</small>
+                                            <p class="card-text px-5 py-2">
+                                            Lindo mi papi ♥
+                                            </p> <img
+                                                src="https://www.milenio.com/uploads/media/2020/06/28/cantante-celebro-redes-sociales-instagram_100_18_874_544.jpg"
+                                                alt="Image" class="card-img-bottom">
+                                            <div class="card-footer fondocardfooter">
+                                                <div role="group" class="btngrupito btn-group"><button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="hand thumbs up"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-hand-thumbs-up b-icon bi text-primary">
+                                                            <g>
+                                                                <path
+                                                                    d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z">
+                                                                </path>
+                                                            </g>
+                                                        </svg> Me gusta
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="chat square text"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-chat-square-text b-icon bi text-success">
+                                                            <g>
+                                                                <path
+                                                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                                </path>
+                                                                <path
+                                                                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                                                </path>
+                                                            </g>
+                                                        </svg> Comentar
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="eye slash fill"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-eye-slash-fill b-icon bi text-warning">
+                                                            <g>
+                                                                <path
+                                                                    d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.027 7.027 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.088z">
+                                                                </path>
+                                                                <path
+                                                                    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6l-12-12 .708-.708 12 12-.708.707z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="trash fill" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor"
+                                                            class="bi-trash-fill b-icon bi text-danger">
+                                                            <g>
+                                                                <path
+                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button></div>
+                                            </div>
+                                            <div class="card-body">
                                                 <div class="comentarios">
                                                     <div class="comUsu">
-                                                        <b-row>
-                                                            <b-col xl="1" lg="1" md="1" sm="4" cols="4">
-                                                                <img class="imgusupub"
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-md-1 col-lg-1 col-xl-1 col-4"><img
                                                                     src="https://electronicssoftware.net/wp-content/uploads/user.png"
-                                                                    width="50px">
-                                                            </b-col>
-                                                            <b-col xl="11" lg="11" md="11" sm="8" cols="8"
-                                                                class="nompub">
+                                                                    width="50px" class="imgusupub"></div>
+                                                            <div
+                                                                class="nompub col-sm-8 col-md-11 col-lg-11 col-xl-11 col-8">
                                                                 <h5>Alejandro Almonacid</h5>
-                                                            </b-col>
-                                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12"
-                                                                class="py-3">
+                                                            </div>
+                                                            <div
+                                                                class="py-3 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                                                 Inventore omnis ipsam architecto quisquam sunt, esse
                                                                 dolorum molestias autem dolore explicabo iste maxime
                                                                 quibusdam. In ullam explicabo sit ducimus ratione
                                                                 nostrum.
-                                                            </b-col>
-                                                        </b-row>
-                                                        <a href="#">
-                                                            <b-icon-hand-thumbs-up variant="primary">
-                                                            </b-icon-hand-thumbs-up><span class="text-muted"> 10
-                                                                likes</span>
-                                                        </a>
-                                                        <a href="#">
-                                                            <b-icon-chat-square-text variant="primary">
-                                                            </b-icon-chat-square-text><span class="text-muted">
-                                                                Responder</span>
-                                                        </a>
-                                                        <a href="#">
-                                                            <b-icon-trash-fill variant="danger"></b-icon-trash-fill>
-                                                            <span class="text-muted"> Borrar</span>
-                                                        </a>
-                                                        <a href="#">
-                                                            <b-icon-eye-slash-fill variant="danger">
-                                                            </b-icon-eye-slash-fill><span class="text-muted"> Bloquear
-                                                                Usuario</span>
-                                                        </a>
-                                                        <div class="respuesta my-2">
-                                                            <b-form-textarea rows="3" max-rows="5"
-                                                                class="formComentario" type="text"
-                                                                placeholder="Responder a Alejandro"></b-form-textarea>
-                                                            <b-button class="btnPublicarComentario" variant="primary">
-                                                                responder</b-button>
-                                                        </div>
+                                                            </div>
+                                                        </div> <a href="#"><svg viewBox="0 0 16 16" width="1em"
+                                                                height="1em" focusable="false" role="img"
+                                                                aria-label="hand thumbs up"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-hand-thumbs-up b-icon bi text-primary">
+                                                                <g>
+                                                                    <path
+                                                                        d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted"> 10
+                                                                likes</span></a> <a href="#"><svg viewBox="0 0 16 16"
+                                                                width="1em" height="1em" focusable="false" role="img"
+                                                                aria-label="chat square text"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-chat-square-text b-icon bi text-primary">
+                                                                <g>
+                                                                    <path
+                                                                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted">
+                                                                Responder</span></a> <a href="#"><svg
+                                                                viewBox="0 0 16 16" width="1em" height="1em"
+                                                                focusable="false" role="img" aria-label="trash fill"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-trash-fill b-icon bi text-danger">
+                                                                <g>
+                                                                    <path
+                                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg> <span class="text-muted"> Borrar</span></a> <a
+                                                            href="#"><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                                focusable="false" role="img" aria-label="eye slash fill"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-eye-slash-fill b-icon bi text-danger">
+                                                                <g>
+                                                                    <path
+                                                                        d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.027 7.027 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.088z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6l-12-12 .708-.708 12 12-.708.707z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted"> Bloquear
+                                                                Usuario</span></a>
+                                                        <div class="respuesta my-2"><textarea
+                                                                placeholder="Responder a Alejandro" wrap="soft"
+                                                                class="formComentario form-control" type="text"
+                                                                style="resize: none; overflow-y: scroll; height: 86px;"
+                                                                id="__BVID__38"></textarea> <button type="button"
+                                                                class="btn btnPublicarComentario btn-primary">
+                                                                responder</button></div>
                                                     </div>
-                                                    <div class="comentarPublicacion">
-                                                        <b-form-textarea rows="3" max-rows="5" class="formComentario"
-                                                            type="text" placeholder="¿Qué estás pensando, Alejandro">
-                                                        </b-form-textarea>
-                                                        <b-button class="btnPublicarComentario" variant="primary">
-                                                            Comentar</b-button>
+                                                    <div class="comentarPublicacion"><textarea
+                                                            placeholder="¿Qué estás pensando, Alejandro" wrap="soft"
+                                                            class="formComentario form-control" type="text"
+                                                            style="resize: none; overflow-y: scroll; height: 86px;"
+                                                            id="__BVID__39"></textarea> <button type="button"
+                                                            class="btn btnPublicarComentario btn-primary">
+                                                            Comentar</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---->
+
+                                        <!---->
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card publicacion">
+
+                                        <div class="card-body">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-2 col-lg-6 col-xl-4 col-6"><img
+                                                            src="https://electronicssoftware.net/wp-content/uploads/user.png"
+                                                            width="75px"></div>
+                                                    <div class="nompub col-sm-6 col-md-10 col-lg-6 col-xl-8 col-6">
+                                                        <h5>Alejandro Almonacid</h5>
+                                                        <p>Gen 5 Front-End Dev</p>
                                                     </div>
                                                 </div>
-                                            </b-card-body>
-                                        </b-card>
-                                    </b-col>
+                                            </div>
+                                            <small class="text-muted pl-3">Last updated 3 mins ago</small>
+                                            <p class="card-text px-5 py-2">
+                                            Lindo mi papi ♥
+                                            </p> <img
+                                                src="https://www.milenio.com/uploads/media/2020/06/28/cantante-celebro-redes-sociales-instagram_100_18_874_544.jpg"
+                                                alt="Image" class="card-img-bottom">
+                                            <div class="card-footer fondocardfooter">
+                                                <div role="group" class="btngrupito btn-group"><button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="hand thumbs up"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-hand-thumbs-up b-icon bi text-primary">
+                                                            <g>
+                                                                <path
+                                                                    d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z">
+                                                                </path>
+                                                            </g>
+                                                        </svg> Me gusta
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="chat square text"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-chat-square-text b-icon bi text-success">
+                                                            <g>
+                                                                <path
+                                                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                                </path>
+                                                                <path
+                                                                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                                                </path>
+                                                            </g>
+                                                        </svg> Comentar
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="eye slash fill"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-eye-slash-fill b-icon bi text-warning">
+                                                            <g>
+                                                                <path
+                                                                    d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.027 7.027 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.088z">
+                                                                </path>
+                                                                <path
+                                                                    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6l-12-12 .708-.708 12 12-.708.707z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button> <button type="button"
+                                                        class="btn btncomentario btn-secondary"><svg viewBox="0 0 16 16"
+                                                            width="1em" height="1em" focusable="false" role="img"
+                                                            aria-label="trash fill" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor"
+                                                            class="bi-trash-fill b-icon bi text-danger">
+                                                            <g>
+                                                                <path
+                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </button></div>
+                                            </div>
+                                            <div class="card-body">
+                                                <!---->
+                                                <!---->
+                                                <div class="comentarios">
+                                                    <div class="comUsu">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-md-1 col-lg-1 col-xl-1 col-4"><img
+                                                                    src="https://electronicssoftware.net/wp-content/uploads/user.png"
+                                                                    width="50px" class="imgusupub"></div>
+                                                            <div
+                                                                class="nompub col-sm-8 col-md-11 col-lg-11 col-xl-11 col-8">
+                                                                <h5>Alejandro Almonacid</h5>
+                                                            </div>
+                                                            <div
+                                                                class="py-3 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                Inventore omnis ipsam architecto quisquam sunt, esse
+                                                                dolorum molestias autem dolore explicabo iste maxime
+                                                                quibusdam. In ullam explicabo sit ducimus ratione
+                                                                nostrum.
+                                                            </div>
+                                                        </div> <a href="#"><svg viewBox="0 0 16 16" width="1em"
+                                                                height="1em" focusable="false" role="img"
+                                                                aria-label="hand thumbs up"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-hand-thumbs-up b-icon bi text-primary">
+                                                                <g>
+                                                                    <path
+                                                                        d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted"> 10
+                                                                likes</span></a> <a href="#"><svg viewBox="0 0 16 16"
+                                                                width="1em" height="1em" focusable="false" role="img"
+                                                                aria-label="chat square text"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-chat-square-text b-icon bi text-primary">
+                                                                <g>
+                                                                    <path
+                                                                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted">
+                                                                Responder</span></a> <a href="#"><svg
+                                                                viewBox="0 0 16 16" width="1em" height="1em"
+                                                                focusable="false" role="img" aria-label="trash fill"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-trash-fill b-icon bi text-danger">
+                                                                <g>
+                                                                    <path
+                                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg> <span class="text-muted"> Borrar</span></a> <a
+                                                            href="#"><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                                focusable="false" role="img" aria-label="eye slash fill"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                class="bi-eye-slash-fill b-icon bi text-danger">
+                                                                <g>
+                                                                    <path
+                                                                        d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.027 7.027 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.088z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6l-12-12 .708-.708 12 12-.708.707z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg><span class="text-muted"> Bloquear
+                                                                Usuario</span></a>
+                                                        <div class="respuesta my-2"><textarea
+                                                                placeholder="Responder a Alejandro" wrap="soft"
+                                                                class="formComentario form-control" type="text"
+                                                                style="resize: none; overflow-y: scroll; height: 86px;"
+                                                                id="__BVID__38"></textarea> <button type="button"
+                                                                class="btn btnPublicarComentario btn-primary">
+                                                                responder</button></div>
+                                                    </div>
+                                                    <div class="comentarPublicacion"><textarea
+                                                            placeholder="¿Qué estás pensando, Alejandro" wrap="soft"
+                                                            class="formComentario form-control" type="text"
+                                                            style="resize: none; overflow-y: scroll; height: 86px;"
+                                                            id="__BVID__39"></textarea> <button type="button"
+                                                            class="btn btnPublicarComentario btn-primary">
+                                                            Comentar</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---->
 
+                                        <!---->
+                                    </div>
+                                </div>
 
-                                </b-row>
                             </div>
-                        </b-col>
 
-                    </b-row>
-                </b-container>
+
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </template>
 
+
+        </div>
     </div>
 
-    <!-- Start running your app -->
-    <script>
-        window.app = new Vue({
-            el: '#app',
-            data: {
-                name: '',
-                img: false
-            },
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 
-            computed: {
-
-
-                cargarIMG() {
-                    return this.img = true;
-                },
-                nocargarIMG() {
-                    return this.img = false;
-                },
-            }
-        })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
     </script>
+    <!-- Optional JavaScript -->
+
 </body>
 
 </html>
