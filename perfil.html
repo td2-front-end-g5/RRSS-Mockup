@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="p-3">
+                <div class="centrar">
+                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
+                    <div class="mt-3">
+                        <h5>[usu_nombre] [usu_apellido]</h5>
+                        <p>[usu_gen_curso]</p>
+                    </div>
+                </div>
+                <hr>
+                <nav class="mb-3">
+                    <ul>
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Usuarios</li>
+                        </a>
+                        <!--Usuarios: Roles
+                Empresa: Publicar avisos de pega (CRUD DE AVISO)
+                Invitado: Solo puede leer blog y publicaciones en general
+                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
+                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
+                -->
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Publicaciones</li>
+                        </a>
+                        <!--
+                    Publicaciones: 
+                    Muro
+                    Blog
+                    Marketplace
+                    Avisos de pega
+                    Sec. Distracción
+                -->
+                        <a href="">
+                            <li>Administrar Noticias</li>
+                        </a>
+                        <a href="">
+                            <li>Administrar Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Inicio</li>
+                        </a>
+                        <a href="">
+                            <li>Sala de Clases</li>
+                        </a>
+                        <a href="">
+                            <li>Noticias/Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Foro</li>
+                        </a>
+                        <a href="">
+                            <li>Avisos</li>
+                        </a>
+                        <a href="">
+                            <li>Marketplace</li>
+                        </a>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Cerrar Menú</button>
+            </div>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <!--NAVS TERMINADOS-->
+
+
+                      <!--CONTAINER PERFIL-->
+                      <div class="container-fluid complete_width">
+                        <div class="fondo">
+                            <div class="headerProfile">
+                                <div class="descripcionUsuario"><span class="bggreen"></span>
+                                    <div class="datosUsuarios">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-7 col-xl-7 col-12"><img
+                                                    src="https://media-exp1.licdn.com/dms/image/C4E03AQEWjhCGjyz8Cw/profile-displayphoto-shrink_200_200/0/1563141178155?e=1623283200&amp;v=beta&amp;t=ci6DhgshYpAVOKMKvqbBye12TQUMKu67OgSz2dCiVJA"
+                                                    alt="" class="imgProfile">
+                                                <h1 class="tituloNomUsu text-white">[usu_nombre] [usu_apellido]</h1>
+                                                <p class="mt-0 mb-3 text-white">[usu_sobre_mi]</p>
+                                                <div>
+                                                    <p><b class="text-white">Redes Sociales</b></p> <a href=""><svg
+                                                            viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                            role="img" aria-label="facebook" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor" class="bi-facebook headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a> <a href=""><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="twitter"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-twitter headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a> <a href=""><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="linkedin"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-linkedin headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a> <a href=""><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="instagram"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-instagram headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a> <a href=""><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="github"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-github headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a> <a href=""><svg viewBox="0 0 16 16" width="1em" height="1em"
+                                                            focusable="false" role="img" aria-label="code slash"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            class="bi-code-slash headIcons b-icon bi">
+                                                            <g>
+                                                                <path
+                                                                    d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z">
+                                                                </path>
+                                                            </g>
+                                                        </svg></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5 col-12">
+                                                <div class="cardProfile">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                            <h2 class="tituloCardProfile">Front End Dev</h2>
+                                                            <p style="text-align: center;">Generación 2020-2021</p>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                            <h4>Experiencia en:</h4>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/color/96/000000/html-5--v1.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/color/96/000000/css3.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/color/50/000000/sass.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/color/96/000000/javascript.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/windows/96/000000/vuejs.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                                                        src="https://img.icons8.com/fluent/96/000000/adobe-photoshop.png"
+                                                                        alt="" class="logoHabilidades"></div>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="btnAccion col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12"><a
+                                                                href="perfilEdit.html"><button type="button"
+                                                                    class="btn btn-warning rounded-pill"><svg
+                                                                        viewBox="0 0 16 16" width="1em" height="1em"
+                                                                        focusable="false" role="img"
+                                                                        aria-label="chat square text fill"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        class="bi-chat-square-text-fill b-icon bi">
+                                                                        <g>
+                                                                            <path
+                                                                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg>
+                                                                    Editar
+                                                                </button></a></div>
+                                                        <div class="btnAccion col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                            <button type="button" class="btn btn-primary rounded-pill"><svg
+                                                                    viewBox="0 0 16 16" width="1em" height="1em"
+                                                                    focusable="false" role="img"
+                                                                    aria-label="chat square text fill"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                    class="bi-chat-square-text-fill b-icon bi">
+                                                                    <g>
+                                                                        <path
+                                                                            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg> Enviar
+                                                                Mensaje
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedorDatos container-fluid">
+                                <div class="cardInfo">
+                                    <!--Vista Publica-->
+                                    <div id="vista_perfil_publica" class="row paddingProfile">
+                                        <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 col-12 px-5">
+                                            <div class="publiProfile">
+                                                <h3>Publicaciones Destacadas</h3>
+                                                <div class="card publicacion">
+                                                    <div class="card-body">
+                                                        <div class="card-header">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-2 col-lg-6 col-xl-4 col-6"><img
+                                                                        src="https://electronicssoftware.net/wp-content/uploads/user.png"
+                                                                        width="75px">
+                                                                </div>
+                                                                <div class="nompub col-sm-6 col-md-10 col-lg-6 col-xl-8 col-6">
+                                                                    <h5>Alejandro Almonacid</h5>
+                                                                    <p>Gen 5 Front-End Dev</p>
+                                                                </div>
+                                                            </div>
+                                                        </div> <small class="text-muted pl-3">Last updated 3 mins ago</small>
+                                                        <p class="card-text px-5 py-2">
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+                                                            velit nisi molestiae distinctio ea iste neque dolore voluptatem
+                                                            hic et explicabo voluptate, magnam quam laboriosam laudantium
+                                                            placeat harum aut voluptas?
+                                                        </p>
+                                                        <div class="card-footer fondocardfooter">
+                                                            <div role="group" class="btngrupito btn-group"><button type="button"
+                                                                    class="btn btncomentario btn-secondary"><svg
+                                                                        viewBox="0 0 16 16" width="1em" height="1em"
+                                                                        focusable="false" role="img" aria-label="hand thumbs up"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        class="bi-hand-thumbs-up b-icon bi text-primary">
+                                                                        <g>
+                                                                            <path
+                                                                                d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg> Me gusta
+                                                                </button> <button type="button"
+                                                                    class="btn btncomentario btn-secondary"><svg
+                                                                        viewBox="0 0 16 16" width="1em" height="1em"
+                                                                        focusable="false" role="img"
+                                                                        aria-label="chat square text"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        class="bi-chat-square-text b-icon bi text-success">
+                                                                        <g>
+                                                                            <path
+                                                                                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg> Comentar
+                                                                </button> <button type="button"
+                                                                    class="btn btncomentario btn-secondary"><svg
+                                                                        viewBox="0 0 16 16" width="1em" height="1em"
+                                                                        focusable="false" role="img" aria-label="eye slash fill"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        class="bi-eye-slash-fill b-icon bi text-warning">
+                                                                        <g>
+                                                                            <path
+                                                                                d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.027 7.027 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.088z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6l-12-12 .708-.708 12 12-.708.707z">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg> Deshabilitar
+                                                                </button> <button type="button"
+                                                                    class="btn btncomentario btn-secondary"><svg
+                                                                        viewBox="0 0 16 16" width="1em" height="1em"
+                                                                        focusable="false" role="img" aria-label="trash fill"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        class="bi-trash-fill b-icon bi text-danger">
+                                                                        <g>
+                                                                            <path
+                                                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg>Eliminar
+                                                                </button></div>
+                                                        </div>
+                                                    </div>
+                                                    <!---->
+                                                    <!---->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-12">
+                                            <div class="publiProfile">
+                                                <h3>Repositorio GitHub</h3>
+                                                <div class="github-widget" data-username="alealmonacid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Fin Vista Publica-->
+                                    <!--Vista Perfil Editar-->
+                                    <div id="vista_perfil_privada">
+                                    <div class="card-body">
+                                        <!---->
+                                        <!---->
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                                                <div>
+                                                    <div class="headerEdit">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-md-10 col-lg-10 col-xl-10 col-6">
+                                                                <h5>Editar Perfil</h5>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2 col-6"><a
+                                                                    href="perfil.html"><button type="button"
+                                                                        class="btn btn-success" style="float: right;">Editar
+                                                                    </button></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <!---->
+                                        <!---->
+                                        <form class="">
+                                            <h6 class="tituloForm">Información de Usuario</h6>
+                                            <div class="row mx-5">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1" class="d-block">Nombre
+                                                            de Usuario:</label>
+                                                        <div><input id="input-1" type="text" placeholder="Alealmonacid"
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Email:</label>
+                                                        <div><input id="input-1" type="email"
+                                                                placeholder="alejandro@alejandro.cl" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1" class="d-block">Primer
+                                                            Nombre:</label>
+                                                        <div><input id="input-1" type="text" placeholder="Alejandro"
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Apellidos:</label>
+                                                        <div><input id="input-1" type="email" placeholder="Almonacid "
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Contraseña:</label>
+                                                        <div><input id="input-1" type="password" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Confirmar Contraseña:</label>
+                                                        <div><input id="input-1" type="password" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Imágen de perfil:</label>
+                                                        <div><input id="input-1" type="url" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Imagen de portada:</label>
+                                                        <div><input id="input-1" type="url" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <h6 class="tituloForm">Información de Usuario</h6>
+                                            <div class="row mx-5">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1" class="d-block">Nombre
+                                                            de Usuario:</label>
+                                                        <div><input id="input-1" type="text" placeholder="Alealmonacid"
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Email:</label>
+                                                        <div><input id="input-1" type="email"
+                                                                placeholder="alejandro@alejandro.cl" required="required"
+                                                                aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1" class="d-block">Primer
+                                                            Nombre:</label>
+                                                        <div><input id="input-1" type="text" placeholder="Alejandro"
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-12">
+                                                    <div id="input-group-1" role="group" class="form-group"><label
+                                                            id="input-group-1__BV_label_" for="input-1"
+                                                            class="d-block">Apellidos:</label>
+                                                        <div><input id="input-1" type="email" placeholder="Almonacid "
+                                                                required="required" aria-required="true" class="form-control">
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <h6 class="tituloForm">Experiencia</h6>
+                                            <div class="row">
+                                                <p class="subtituloForm"><b>Activar Experiencia: </b></p>
+                                                <div class="col">
+                                                    <fieldset class="form-group" id="__BVID__47">
+                                                        <!---->
+                                                        <div>
+                                                            <div id="checkbox-group-1" role="group" tabindex="-1"
+                                                                class="bv-no-focus-ring">
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_0" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_0"
+                                                                        class="custom-control-label"><span>HTML5</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_1" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_1"
+                                                                        class="custom-control-label"><span>JS</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_2" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_2"
+                                                                        class="custom-control-label"><span>vueJS</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_3" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_3"
+                                                                        class="custom-control-label"><span>CSS3</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_4" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_4"
+                                                                        class="custom-control-label"><span>SCSS</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_5" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_5"
+                                                                        class="custom-control-label"><span>Laravel</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_6" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_6"
+                                                                        class="custom-control-label"><span>Python</span></label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-control-inline custom-checkbox">
+                                                                    <input id="checkbox-group-1_BV_option_7" type="checkbox"
+                                                                        name="flavour-1" class="custom-control-input"
+                                                                        value=""><label for="checkbox-group-1_BV_option_7"
+                                                                        class="custom-control-label"><span>Firebase</span></label>
+                                                                </div>
+                                                            </div>
+                                                            <!---->
+                                                            <!---->
+                                                            <!---->
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <h6 class="tituloForm">Sobre Mi</h6>
+                                            <div class="row mx-5 pb-3">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"><textarea
+                                                        id="textarea" placeholder="Sobre Mi" wrap="soft" class="form-control"
+                                                        style="resize: none; overflow-y: scroll; height: 86px;"></textarea>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </form>
+                                    </div>
+                                    </div>
+                                    <!--Fin Vista Perfil Editar-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--FIN CONTAINER PERFIL-->
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+
+</body>
+
+</html>

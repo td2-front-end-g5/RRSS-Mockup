@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="p-3">
+                <div class="centrar">
+                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
+                    <div class="mt-3">
+                        <h5>[usu_nombre] [usu_apellido]</h5>
+                        <p>[usu_gen_curso]</p>
+                    </div>
+                </div>
+                <hr>
+                <nav class="mb-3">
+                    <ul>
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Usuarios</li>
+                        </a>
+                        <!--Usuarios: Roles
+                Empresa: Publicar avisos de pega (CRUD DE AVISO)
+                Invitado: Solo puede leer blog y publicaciones en general
+                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
+                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
+                -->
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Publicaciones</li>
+                        </a>
+                        <!--
+                    Publicaciones: 
+                    Muro
+                    Blog
+                    Marketplace
+                    Avisos de pega
+                    Sec. Distracción
+                -->
+                        <a href="">
+                            <li>Administrar Noticias</li>
+                        </a>
+                        <a href="">
+                            <li>Administrar Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Inicio</li>
+                        </a>
+                        <a href="">
+                            <li>Sala de Clases</li>
+                        </a>
+                        <a href="">
+                            <li>Noticias/Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Foro</li>
+                        </a>
+                        <a href="">
+                            <li>Avisos</li>
+                        </a>
+                        <a href="">
+                            <li>Marketplace</li>
+                        </a>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Cerrar Menú</button>
+            </div>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <!--NAVS TERMINADOS-->
+
+
+            <!--PAGINA TODOS LOS POST DE BLOG / EVENTO-->
+            <div class="blogPost">
+                <div class="row">
+                    <div class="mb-2 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="card overflow-hidden" style="max-width: 540px;">
+                            <!---->
+                            <!---->
+                            <div class="row no-gutters">
+                                <div class="col-md-6"><img src="https://i.blogs.es/bedeb1/sms2/2560_3000.jpeg"
+                                        alt="Image" class="rounded-0 card-img" style="height: 100%;"></div>
+                                <div class="col-md-6">
+                                    <div class="card-body" style="padding: 10%;">
+                                        <h4 class="card-title">Titulo</h4>
+                                        <!---->
+                                        <p class="card-text">
+                                            El descalabro de Facebook deja una lección importante: los
+                                            SMS no sirven como sistema de autenticación en dos pasos
+                                        </p> <kbd class="categoriaPost">Seguridad Informática</kbd>
+                                    </div>
+                                    <div class="card-footer"><a href="post.html">Leer más</a></div>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div class="mb-2 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="card overflow-hidden" style="max-width: 540px;">
+                            <!---->
+                            <!---->
+                            <div class="row no-gutters">
+                                <div class="col-md-6"><img src="https://picsum.photos/400/400/?image=20" alt="Image"
+                                        class="rounded-0 card-img"></div>
+                                <div class="col-md-6">
+                                    <div class="card-body" style="padding: 10%;">
+                                        <h4 class="card-title">Horizontal Card</h4>
+                                        <!---->
+                                        <p class="card-text">
+                                            This is a wider card with supporting text as a natural
+                                            lead-in to additional content.
+                                            This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div class="mb-2 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="card overflow-hidden" style="max-width: 540px;">
+                            <!---->
+                            <!---->
+                            <div class="row no-gutters">
+                                <div class="col-md-6"><img src="https://picsum.photos/400/400/?image=20" alt="Image"
+                                        class="rounded-0 card-img"></div>
+                                <div class="col-md-6">
+                                    <div class="card-body" style="padding: 10%;">
+                                        <h4 class="card-title">Horizontal Card</h4>
+                                        <!---->
+                                        <p class="card-text">
+                                            This is a wider card with supporting text as a natural
+                                            lead-in to additional content.
+                                            This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN PAGINA TODOS LOS POST DE BLOG / EVENTO-->
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+
+</body>
+
+</html>
