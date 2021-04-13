@@ -5,11 +5,11 @@ import { initRouter } from './router.js'
 import { templateLogin } from './assets/view/templateLogin.js'
 
 const init = () => {
-    initFirebase();
-    signIn();
-    validateSigned();
     initRouter();
     templateLogin();
+    initFirebase();
+    validateSigned();
+    signIn();
 }
 
 window.addEventListener('load', init)
