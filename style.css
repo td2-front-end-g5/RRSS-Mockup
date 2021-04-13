@@ -29,8 +29,7 @@
     min-height: 1px;
     padding: 0;
 }
-
-.blogPost {
+.blogPost{
     padding: 5%;
     height: 917px;
     overflow-y: scroll;
@@ -200,17 +199,41 @@
 
 /*Inicio*/
 
-.centrarbtn {
+.login{
+    background: rgb(145,227,159);
+    background: linear-gradient(45deg, rgba(145,227,159,1) 0%, rgba(255,255,255,1) 49%);
+    width: 50%;
+    padding: 5%;
+    border-radius: 25px;
+    border-color: rgb(199, 199, 199);
+    box-shadow: 0px 0px 38px -2px rgba(0,0,0,0.46);
+}
+.centrarbtn{
     text-align: center;
     padding-bottom: 35px;
 }
-
-.centrartxt {
+.centrartxt{
     text-align: center;
+}
+.logoLogin{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+/*Medias Querys*/
+@media only screen and (max-width : 767px) {
+
+    .login{
+    width: 100%;
+    padding: 5%;
+    border-radius: 25px;
+    border-color: rgb(199, 199, 199);
+    box-shadow: 0px 0px 0px -2px rgba(0,0,0,0.46);
+}
 }
 
 /*Perfil*/
-.headerProfile {
+.headerProfile{
     min-height: 600px;
     background-image: url(https://media-exp1.licdn.com/dms/image/C4E16AQExSBrwsUeSFg/profile-displaybackgroundimage-shrink_200_800/0/1583801880625?e=1623283200&v=beta&t=hZZTvbC0B6fn_iixAN0FpJulaaDUWPRHmrdSnr_A8Tw);
     background-size: cover;
@@ -219,174 +242,147 @@
     align-items: center;
     display: flex;
 }
-
-.descripcionUsuario {
+.descripcionUsuario{
     width: 100%;
 }
-
-.bggreen {
+.bggreen{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     transition: all .15s ease;
-    opacity: .9 !important;
-    background: linear-gradient(45deg, #cec32d, #ce8e2d) !important;
+    opacity: .9!important;
+    background: linear-gradient(45deg,#cec32d,#ce8e2d)!important;
 }
-
-.datosUsuarios {
+.datosUsuarios{
     align-items: center !important;
     width: 90%;
     margin-right: auto;
     margin-left: auto;
 }
-
-.tituloNomUsu {
+.tituloNomUsu{
     font-size: 2.75rem;
     font-weight: 600;
     line-height: 1.5;
 }
-
-.headIcons {
+.headIcons{
     height: 20px;
     width: 20px;
     color: white;
     margin-left: 5px;
 }
-
-.imgProfile {
+.imgProfile{
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    box-shadow: 0px 3px 31px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 3px 31px -10px rgba(0,0,0,0.75);
 }
-
 @media screen and (min-width: 768px) {
-    .descripcionUsuario {
-        padding-left: 39px ! important;
-        padding-right: 39px ! important;
+    .descripcionUsuario{
+        padding-left: 39px! important;
+        padding-right: 39px! important;
     }
 }
-
-.cardProfile {
+.cardProfile{
     background-color: white;
     padding: 5%;
     border-radius: 25px;
 }
-
-.tituloCardProfile {
+.tituloCardProfile{
     text-align: center;
 }
-
-.logoHabilidades {
+.logoHabilidades{
     width: 50px;
     height: 50px;
 }
-
-.btnAccion {
+.btnAccion{
     text-align: center;
 }
-
-.contenedorDatos {
-    margin-top: -4.5rem !important;
+.contenedorDatos{
+    margin-top: -4.5rem!important;
     position: relative;
 }
-
-.cardInfoEdit {
-    background-color: white;
+.cardInfoEdit{
+    background-color:white;
     border-radius: 15px;
-    box-shadow: 0px 3px 31px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 3px 31px -10px rgba(0,0,0,0.75);
     margin: 0% 5% 0% 5%;
 }
-
-.cardInfo {
-    background-color: white;
+.cardInfo{
+    background-color:white;
     border-radius: 15px;
-    box-shadow: 0px 3px 31px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 3px 31px -10px rgba(0,0,0,0.75);
     margin: 0% 5% 0% 5%;
 }
-
-.headerEdit {
+.headerEdit{
     padding: 1.25rem 1.5rem;
     margin-bottom: 0;
     background-color: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    border-bottom: 1px solid rgba(0,0,0,.05);
 }
-
-.tituloForm {
+.tituloForm{
     padding-top: .25rem;
     padding-bottom: .25rem;
     font-size: .75rem;
     letter-spacing: .04em;
     text-transform: uppercase;
-    color: #8898aa !important;
+    color: #8898aa!important;
     margin-bottom: 1%;
     margin-top: 3%;
     margin-left: 5%;
 }
-
-.subtituloForm {
+.subtituloForm{
     padding-top: .25rem;
     padding-bottom: .25rem;
     font-size: .75rem;
     letter-spacing: .04em;
     text-transform: uppercase;
-    color: #8898aa !important;
+    color: #8898aa!important;
     margin-bottom: 2%;
     margin-left: 5%;
 }
-
-.publiProfile {
+.publiProfile{
     padding: 5%;
 }
-
-.paddingProfile {
+.paddingProfile{
     padding: 5%;
 }
-
 /*BLOG POST*/
-.slide2 {
+.slide2{
     overflow-y: scroll;
     height: 918px;
 }
-
-.postFondo {
+.postFondo{
     background-color: white;
     padding: 5%;
     border-radius: 25px;
     margin-top: 2%;
 }
-
-.categoriaPost {
+.categoriaPost{
     background-color: green;
-
+    
 }
-
-.imgPost {
+.imgPost{
     width: 100%;
     height: 350px;
 }
-
-.tituloPost {
+.tituloPost{
     margin-top: 20px;
     padding: 2%;
     color: white;
-    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.68);
+    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.68);        
 }
-
-.sectCompartir {
+.sectCompartir{
     color: white;
     float: right;
 }
-
-.jumbotronPega {
+.jumbotronPega{
     margin-right: 10%;
     margin-left: 10%;
 
 }
-
-.iconCompartir {
+.iconCompartir{
     height: 25px;
     width: 25px;
     margin: 5px 10px 0px 0px;
@@ -418,117 +414,98 @@
 }
 
 /*CARDS OFERTAS LABORALES*/
-.cardColor-1 {
+.cardColor-1{
     background-color: #6F78C5;
     color: white;
 }
-
-.cardColor-1:hover {
+.cardColor-1:hover{
     background-color: #646baf;
     color: white;
     text-decoration: none;
 }
 
-.cardColor-2 {
+.cardColor-2{
     background-color: #c56fc2;
     color: white;
 }
-
-.cardColor-2:hover {
+.cardColor-2:hover{
     background-color: #a35ca1;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-3 {
+.cardColor-3{
     background-color: #c56f6f;
     color: white;
 }
-
-.cardColor-3:hover {
+.cardColor-3:hover{
     background-color: #a75d5d;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-4 {
+.cardColor-4{
     background-color: #84c56f;
     color: white;
 }
-
-.cardColor-4:hover {
+.cardColor-4:hover{
     background-color: #6fa75d;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-5 {
+.cardColor-5{
     background-color: #a0c56f;
     color: white;
 }
-
-.cardColor-5:hover {
+.cardColor-5:hover{
     background-color: #81a059;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-6 {
+.cardColor-6{
     background-color: #193849;
     color: white;
 }
-
-.cardColor-6:hover {
+.cardColor-6:hover{
     background-color: #26556e;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-7 {
+.cardColor-7{
     background-color: #6fadc5;
     color: white;
 }
-
-.cardColor-7:hover {
+.cardColor-7:hover{
     background-color: #598ca0;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-8 {
+.cardColor-8{
     background-color: #f2f6f7;
     color: #2b355f;
 }
-
-.cardColor-8:hover {
+.cardColor-8:hover{
     background-color: #c0c4c5;
     color: #2b355f;
     text-decoration: none;
 }
-
-.cardColor-9 {
+.cardColor-9{
     background-color: #026cb6;
     color: white;
 }
-
-.cardColor-9:hover {
+.cardColor-9:hover{
     background-color: #035692;
     color: white;
     text-decoration: none;
 }
-
-.cardColor-0 {
+.cardColor-0{
     background-color: #2cbbaf;
     color: white;
 }
-
-.cardColor-0:hover {
+.cardColor-0:hover{
     background-color: #23998f;
     color: white;
     text-decoration: none;
 }
-
-.cardBox {
+.cardBox{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -538,13 +515,11 @@
     margin: 7px;
     min-width: 32%;
 }
-
-.cardBox__titulo {
+.cardBox__titulo{
     display: flex;
     align-items: center;
 }
-
-.cardBox_avatar {
+.cardBox_avatar{
     position: relative;
     width: 72px;
     height: 72px;
@@ -556,66 +531,45 @@
     background-size: cover;
     background-position: center;
 }
-
-.cardCargo {
+.cardCargo{
     font-weight: 900;
     margin: 0;
     font-size: 18px;
     letter-spacing: 0.01em;
 }
-
-.cardExtra {
+.cardExtra{
     margin-left: 23px;
     max-width: 85px;
-    float: right;
+    float:right;
 }
-
-.containerJob {
+.containerJob{
     width: 100%;
     max-width: 1170px;
     padding: 0 29px;
     margin: 0 auto;
     line-height: 1.6;
 }
-
-.cardsJobs {
+.cardsJobs{
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
     overflow-y: scroll;
     height: 625px;
 }
-
-a:hover {
+a:hover{
     text-decoration: none;
 }
 
 /*FIN CARDS OFERTAS LABORALES*/
 
 /*Pega*/
-.iconEmpleador {
+.iconEmpleador{
     width: 75px;
     height: 75px;
     background-color: white;
     border-radius: 50%;
 }
-
-.footerPega {
+.footerPega{
     text-align: center;
     padding: 5%;
-}
-
-/*--CSS Login--*/
-
-.bannerTop {
-    min-height: 20vh;
-}
-
-.login {
-    background-color: #f5f0f0;
-}
-
-.btn:hover {
-    color: #56275a;
-    text-decoration: none;
 }
