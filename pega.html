@@ -1,392 +1,262 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
+    <title>Title</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Bienvenidos a DL-Alumnos</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <!-- Required Stylesheets -->
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
-    <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
-    <!-- Required scripts -->
-    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Our application root element -->
-    <div id="app">
-        <!--Sidebar (Opciones de navegacion)-->
-        <template>
-            <div>
-                <!--NAVBAR-->
-                <b-navbar toggleable="lg" type="dark" variant="dark">
-                    <b-button v-b-toggle.sidebar-no-header>
-                        <b-icon-menu-down scale="1"></b-icon-menu-down>
-                    </b-button>
-                    <b-collapse id="nav-collapse" is-nav>
-                        <!-- Right aligned nav items -->
-                        <b-navbar-nav class="margin-left-nav">
-                            <b-nav-item-dropdown right>
-                                <!-- Using 'button-content' slot -->
-                                <template #button-content>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="10%"
-                                        class="imgUsu">
-                                    <em>Hola! Alejandro</em>
-                                </template>
-                                <b-dropdown-item href="perfil.html">Mi Perfil</b-dropdown-item>
-                                <b-dropdown-item href="index.html">Cerrar Sesión</b-dropdown-item>
-                            </b-nav-item-dropdown>
-                        </b-navbar-nav>
-                    </b-collapse>
-                </b-navbar>
-                <!--FIN NAVBAR-->
-                <div>
-                    <b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" no-header shadow>
-                        <template #default="{ hide }">
-                            <div class="p-3">
-                                <div class="centrar">
-                                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
-                                    <div class="mt-3">
-                                        <h5>Alejandro Almonacid</h5>
-                                        <p>G5 - Front End Dev</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <nav class="mb-3">
-                                    <b-nav vertical>
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Usuarios</b-nav-item>
-                                        <!--Usuarios: Roles
-                                Empresa: Publicar avisos de pega (CRUD DE AVISO)
-                                Invitado: Solo puede leer blog y publicaciones en general
-                                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
-                                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
-                                -->
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Publicaciones</b-nav-item>
-                                        <!--
-                                    Publicaciones: 
-                                    Muro
-                                    Blog
-                                    Marketplace
-                                    Avisos de pega
-                                    Sec. Distracción
-                                -->
-                                <b-nav-item href="#link-1" @click="hide">Administrar Noticias</b-nav-item>
-                                <b-nav-item href="#link-1" @click="hide">Administrar Eventos</b-nav-item>
-                                <b-nav-item href="inicio.html" @click="hide">Inicio</b-nav-item>
-                                <b-nav-item href="saladeclase.html" @click="hide">Sala de Clases</b-nav-item>
-                                <b-nav-item href="blog.html" @click="hide">Noticias/Eventos</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Foro</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Avisos</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Marketplace</b-nav-item>
-                                    </b-nav>
-                                </nav>
-                                <b-button variant="primary" block @click="hide">Cerrar Menú</b-button>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="p-3">
+                <div class="centrar">
+                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
+                    <div class="mt-3">
+                        <h5>[usu_nombre] [usu_apellido]</h5>
+                        <p>[usu_gen_curso]</p>
+                    </div>
+                </div>
+                <hr>
+                <nav class="mb-3">
+                    <ul>
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Usuarios</li>
+                        </a>
+                        <!--Usuarios: Roles
+                Empresa: Publicar avisos de pega (CRUD DE AVISO)
+                Invitado: Solo puede leer blog y publicaciones en general
+                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
+                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
+                -->
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Publicaciones</li>
+                        </a>
+                        <!--
+                    Publicaciones: 
+                    Muro
+                    Blog
+                    Marketplace
+                    Avisos de pega
+                    Sec. Distracción
+                -->
+                        <a href="">
+                            <li>Administrar Noticias</li>
+                        </a>
+                        <a href="">
+                            <li>Administrar Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Inicio</li>
+                        </a>
+                        <a href="">
+                            <li>Sala de Clases</li>
+                        </a>
+                        <a href="">
+                            <li>Noticias/Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Foro</li>
+                        </a>
+                        <a href="">
+                            <li>Avisos</li>
+                        </a>
+                        <a href="">
+                            <li>Marketplace</li>
+                        </a>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Cerrar Menú</button>
+            </div>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
                             </div>
-                        </template>
-                    </b-sidebar>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <!--NAVS TERMINADOS-->
+
+
+            <!--POST OFERTA LABORAL-->
+            <div class="postFondo">
+                <div class="jumbotron"
+                    style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) 0% 0% / 100% no-repeat, url(&quot;&quot;);">
+                    <!---->
+                    <!---->
+                    <div class="row jumbotronPega">
+                        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-2"><img
+                                src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                class="iconEmpleador"></div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6"><strong style="color: white;">[Nombre
+                                Empresa]</strong><br> <strong style="color: white;">Empresa Verificada</strong><br>
+                            <strong style="color: white;">Pais: Chile</strong></div>
+                        <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-4"><kbd class="taghtml5">HTML5</kbd> <kbd
+                                class="tagvuejs">VueJs</kbd> <kbd class="tagjs">JavaScript</kbd> <kbd
+                                class="tagfirebase">Firebase</kbd> <kbd class="tagscss">SCSS</kbd> <kbd
+                                class="tagithub">Github</kbd></div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                            <h1 class="tituloPost">Full-Stack Developer (Node + React)</h1>
+                            <p style="color: white;"><svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                    role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi-wifi b-icon bi">
+                                    <g>
+                                        <path
+                                            d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                        </path>
+                                        <path
+                                            d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                        </path>
+                                    </g>
+                                </svg> - Remoto - Full time | Programación |
+                                Nivel: Junior | Sueldo líquido: $2800 - 2900 USD/mes
+                            </p>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6"><button type="button"
+                                class="btn btn-info btn-lg">Postula a este empleo</button></div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                            <div class="sectCompartir">
+                                <h6>Compartir:</h6> <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                    role="img" aria-label="facebook" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" class="bi-facebook iconCompartir b-icon bi">
+                                    <g>
+                                        <path
+                                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
+                                        </path>
+                                    </g>
+                                </svg> <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                    aria-label="linkedin" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi-linkedin iconCompartir b-icon bi">
+                                    <g>
+                                        <path
+                                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
+                                        </path>
+                                    </g>
+                                </svg> <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                    aria-label="twitter" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi-twitter iconCompartir b-icon bi">
+                                    <g>
+                                        <path
+                                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                                        </path>
+                                    </g>
+                                </svg> <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                    aria-label="mailbox" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi-mailbox iconCompartir b-icon bi">
+                                    <g>
+                                        <path
+                                            d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z">
+                                        </path>
+                                        <path
+                                            d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="margin-left: 10%; margin-right: 10%;">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic
+                        laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis
+                        exercitationem, provident sapiente totam perferendis autem mollitia dolorem
+                        cupiditate numquam!</p>
+                </div>
+                <div class="footerPega"><button type="button" class="btn btn-info btn-lg">Postula a este empleo</button>
                 </div>
             </div>
+            <!--FIN POST OFERTA LABORAL-->
 
-            <div class="fondo">
-                <b-container fluid>
-                    <b-row>
-                        <b-col xl="3" lg="4" md="12" sm="12" cols="12" class="secpriv">
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Próximo Evento</h3>
-                                </label>
-                                <div>
-                                    <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                                        tag="article" style="max-width: 20rem;" class="mb-2">
-                                        <b-card-text>
-                                            <h2>Titulo Evento</h2>
-                                            <p>Resumen</p>
-                                        </b-card-text>
-                                        <b-card-footer >
-                                            <a href="">Ir a Evento</a>
-                                        </b-card-footer>
 
-                                    </b-card>
-                                </div>
-                            </div>
-
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Avisos de empleo</h3>
-                                </label>
-                                <b-button v-b-toggle.collapse-1 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-1" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-2 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-2" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-3 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-3" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-4 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-4" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-5 variant="primary" style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-5" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                
-                                <div style="padding: 5%;">
-                                    <a href="empleos.html"><b-button variant="warning" style="width: 100%;">Ver todas las ofertas</b-button></a>
-                                </div>
-                            </div>
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Playlist de la semana</h3>
-                                </label>
-                                <div>
-                                    <iframe src="https://open.spotify.com/embed/playlist/1rEzcCeI7JC2SDEy7FycJL"
-                                        width="100%" height="330" frameborder="0" allowtransparency="true"
-                                        allow="encrypted-media"></iframe>
-                                </div>
-                            </div>
-                        </b-col>
-                        <b-col xl="9" lg="8" md="12" sm="12" cols="12">
-                            <div class="postFondo">
-                                <b-jumbotron style="background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url();background-repeat: no-repeat;background-size: 100%;">
-                                    <template>
-                                        <b-row class="jumbotronPega">
-                                            <b-col xl="2" lg="2" md="2" sm="2" cols="2">
-                                                <img class="iconEmpleador" src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png">
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <strong style="color: white;">[Nombre Empresa]</strong><br>
-                                                <strong style="color: white;">Empresa Verificada</strong><br>
-                                                <strong style="color: white;">Pais: Chile</strong>
-                                            </b-col>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                            <h1 class="tituloPost">Full-Stack Developer (Node + React)</h1>
-                                            <p style="color: white;"><b-icon-wifi></b-icon-wifi> - Remoto - Full time | Programación | Nivel: Junior | Sueldo líquido: $2800 - 2900 USD/mes</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <b-button size="lg" variant="info">Postula a este empleo</b-button>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <div class="sectCompartir">
-                                                    <h6>Compartir:</h6> 
-                                                    <b-icon-facebook class="iconCompartir"></b-icon-facebook>
-                                                    <b-icon-linkedin class="iconCompartir"></b-icon-linkedin>
-                                                    <b-icon-twitter class="iconCompartir"></b-icon-twitter>
-                                                    <b-icon-mailbox class="iconCompartir"></b-icon-mailbox>
-                                                </div>
-                                            </b-col>
-                                        </b-row>
-                                        
-                                    </template>
-                                  </b-jumbotron>
-                                  <b-container style="margin-left: 10%; margin-right: 10%;">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ab hic laudantium, ex dignissimos quasi dolore molestiae, enim nam perspiciatis exercitationem, provident sapiente totam perferendis autem mollitia dolorem cupiditate numquam!</p>
-                                </b-container>
-                                <div class="footerPega">
-                                <b-button size="lg" variant="info">Postula a este empleo</b-button> | <b-icon-emoji-angry-fill variant="danger"><a href="#"></b-icon-emoji-angry-fill> Reportar Empleo</a>
-                                </div>
-                            </div>
-                        </b-col>
-
-                    </b-row>
-                </b-container>
-            </div>
-        </template>
-
+        </div>
     </div>
 
-    <!-- Start running your app -->
-    <script>
-        window.app = new Vue({
-            el: '#app',
-            data: {
-                name: '',
-                img: false
-            },
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 
-            computed: {
-
-
-                cargarIMG() {
-                    return this.img = true;
-                },
-                nocargarIMG() {
-                    return this.img = false;
-                },
-            }
-        })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
     </script>
+    <!-- Optional JavaScript -->
+
 </body>
 
 </html>

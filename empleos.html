@@ -1,613 +1,1145 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
+    <title>Title</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Bienvenidos a DL-Alumnos</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <!-- Required Stylesheets -->
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
-    <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
-    <!-- Required scripts -->
-    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Our application root element -->
-    <div id="app">
-        <!--Sidebar (Opciones de navegacion)-->
-        <template>
-            <div>
-                <!--NAVBAR-->
-                <b-navbar toggleable="lg" type="dark" variant="dark">
-                    <b-button v-b-toggle.sidebar-no-header>
-                        <b-icon-menu-down scale="1"></b-icon-menu-down>
-                    </b-button>
-                    <b-collapse id="nav-collapse" is-nav>
-                        <!-- Right aligned nav items -->
-                        <b-navbar-nav class="margin-left-nav">
-                            <b-nav-item-dropdown right>
-                                <!-- Using 'button-content' slot -->
-                                <template #button-content>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="10%"
-                                        class="imgUsu">
-                                    <em>Hola! Alejandro</em>
-                                </template>
-                                <b-dropdown-item href="perfil.html">Mi Perfil</b-dropdown-item>
-                                <b-dropdown-item href="index.html">Cerrar Sesión</b-dropdown-item>
-                            </b-nav-item-dropdown>
-                        </b-navbar-nav>
-                    </b-collapse>
-                </b-navbar>
-                <!--FIN NAVBAR-->
-                <div>
-                    <b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" no-header shadow>
-                        <template #default="{ hide }">
-                            <div class="p-3">
-                                <div class="centrar">
-                                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
-                                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
-                                    <div class="mt-3">
-                                        <h5>Alejandro Almonacid</h5>
-                                        <p>G5 - Front End Dev</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <nav class="mb-3">
-                                    <b-nav vertical>
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Usuarios</b-nav-item>
-                                        <!--Usuarios: Roles
-                                Empresa: Publicar avisos de pega (CRUD DE AVISO)
-                                Invitado: Solo puede leer blog y publicaciones en general
-                                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
-                                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
-                                -->
-                                        <b-nav-item href="#link-1" @click="hide">Administrar Publicaciones</b-nav-item>
-                                        <!--
-                                    Publicaciones: 
-                                    Muro
-                                    Blog
-                                    Marketplace
-                                    Avisos de pega
-                                    Sec. Distracción
-                                -->
-                                <b-nav-item href="#link-1" @click="hide">Administrar Noticias</b-nav-item>
-                                <b-nav-item href="#link-1" @click="hide">Administrar Eventos</b-nav-item>
-                                <b-nav-item href="inicio.html" @click="hide">Inicio</b-nav-item>
-                                <b-nav-item href="saladeclase.html" @click="hide">Sala de Clases</b-nav-item>
-                                <b-nav-item href="blog.html" @click="hide">Noticias/Eventos</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Foro</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Avisos</b-nav-item>
-                                <b-nav-item href="#link-2" @click="hide">Marketplace</b-nav-item>
-                                    </b-nav>
-                                </nav>
-                                <b-button variant="primary" block @click="hide">Cerrar Menú</b-button>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="p-3">
+                <div class="centrar">
+                    <h4 id="sidebar-no-header-title">Bienvenido</h4>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="50%">
+                    <div class="mt-3">
+                        <h5>[usu_nombre] [usu_apellido]</h5>
+                        <p>[usu_gen_curso]</p>
+                    </div>
+                </div>
+                <hr>
+                <nav class="mb-3">
+                    <ul>
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Usuarios</li>
+                        </a>
+                        <!--Usuarios: Roles
+                Empresa: Publicar avisos de pega (CRUD DE AVISO)
+                Invitado: Solo puede leer blog y publicaciones en general
+                ExAlumno: Publicar Avisos, Marketplace, Muro, etc
+                Alumno:   Publicar Avisos, Marketplace, Muro, etc                         
+                -->
+                        <a href="">
+                            <li href="#link-1" @click="hide">Administrar Publicaciones</li>
+                        </a>
+                        <!--
+                    Publicaciones: 
+                    Muro
+                    Blog
+                    Marketplace
+                    Avisos de pega
+                    Sec. Distracción
+                -->
+                        <a href="">
+                            <li>Administrar Noticias</li>
+                        </a>
+                        <a href="">
+                            <li>Administrar Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Inicio</li>
+                        </a>
+                        <a href="">
+                            <li>Sala de Clases</li>
+                        </a>
+                        <a href="">
+                            <li>Noticias/Eventos</li>
+                        </a>
+                        <a href="">
+                            <li>Foro</li>
+                        </a>
+                        <a href="">
+                            <li>Avisos</li>
+                        </a>
+                        <a href="">
+                            <li>Marketplace</li>
+                        </a>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Cerrar Menú</button>
+            </div>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
                             </div>
-                        </template>
-                    </b-sidebar>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <!--NAVS TERMINADOS-->
+
+
+             <!--OFERTAS LABORALES-->
+             <div class="container-fluid">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                    <section>
+                        <div class="tituloBP">
+                            <h1>[Usuario], estas son las ofertas laborales que hay para ti</h1>
+                        </div>
+                        <div class="buscador container">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 col-12">
+                                    <h5>Filtrar por:</h5> <a href="#"><kbd class="taghtml5">HTML5</kbd></a> <a
+                                        href="#"><kbd class="tagvuejs">VueJs</kbd></a> <a href="#"><kbd
+                                            class="tagjs">JavaScript</kbd></a> <a href="#"><kbd
+                                            class="tagfirebase">Firebase</kbd></a> <a href="#"><kbd
+                                            class="tagscss">SCSS</kbd></a> <a href="#"><kbd
+                                            class="tagithub">Github</kbd></a>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                                    <form class="formBuscador form-inline"><input id="inline-form-input-name"
+                                            type="text" placeholder="Tema" class="mb-2 mr-sm-2 mb-sm-0 form-control">
+                                        <button type="button" class="btn btn-primary">Buscar</button></form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="containerJob">
+                        <div class="cardsJobs"><a href="pega.html" class="cardColor-1 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-2 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-3 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-4 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-5 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-6 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-7 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-8 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-9 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a> <a href="#" class="cardColor-0 cardBox">
+                                <div class="cardBox__titulo">
+                                    <div class="cardBox_avatar"><img
+                                            src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png"
+                                            width="72px" height="75px"></div>
+                                    <div><strong>[Nombre Empresa + icono verificado]</strong>
+                                        <h4 class="cardCargo">Ingeniero de Software</h4> <span
+                                            title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular."><svg
+                                                viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                role="img" aria-label="wifi" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" class="bi-wifi b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg> Remoto - FullTime
+                                        </span>
+                                    </div>
+                                    <div class="cardExtra"><span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span> <span title="cosita"><svg viewBox="0 0 16 16" width="1em"
+                                                height="1em" focusable="false" role="img" aria-label="wifi"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="bi-wifi ml-3 b-icon bi">
+                                                <g>
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z">
+                                                    </path>
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z">
+                                                    </path>
+                                                </g>
+                                            </svg></span></div>
+                                </div>
+                            </a></div>
+                    </section>
                 </div>
             </div>
-            <!--FIN NAVBAR-->
-            <!--PAGINA DE INICIO
-            
-            1) Publicaciones hechas por los usuario (Muro) lado derecho
-            en el muro podrá ver publicaciones igual que el usuario, con la opcion extra de poder eliminar dicha publicacion
+            <!--FIN OFERTA LABORALES-->
 
-            ejemplo:
-            footer de la publicacion, existirá lo siguiente
-            Reacciones - Comentarios (v-if v-else) - Deshabilitar comentarios (v-if v-else) - Eliminar publicación
 
-            ésto existirá igual, en los comentarios de la publicación
-            Reacción - Responder - Borrar Comentario
-
-            2) 
-            -->
-            <div class="fondo">
-                <b-container fluid>
-                    <b-row>
-                        <!--SLIDER-->
-                        <b-col xl="3" lg="4" md="12" sm="12" cols="12" class="secpriv">
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Próximo Evento</h3>
-                                </label>
-                                <div>
-                                    <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                                        tag="article" style="max-width: 20rem;" class="mb-2">
-                                        <b-card-text style="padding:1rem;">
-                                            <h2>Titulo Evento</h2>
-                                            <p>Resumen</p>
-                                        </b-card-text>
-                                        <b-card-footer>
-                                            <a href="">Ir a Evento</a>
-                                        </b-card-footer>
-
-                                    </b-card>
-                                </div>
-                            </div>
-
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Avisos de empleo</h3>
-                                </label>
-                                <b-button v-b-toggle.collapse-1 variant="primary"
-                                    style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-1" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de
-                                                    experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-2 variant="primary"
-                                    style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-2" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de
-                                                    experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-3 variant="primary"
-                                    style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-3" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de
-                                                    experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-4 variant="primary"
-                                    style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-4" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de
-                                                    experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                                <b-button v-b-toggle.collapse-5 variant="primary"
-                                    style="border-radius: 0px; width: 100%;">Se busca programador jr</b-button>
-                                <b-collapse id="collapse-5" class="mt-2">
-                                    <b-card style="padding: 1rem;" bg-variant="primary" text-variant="white">
-                                        <b-row>
-                                            <b-col xl="4" lg="4" md="4" sm="4" cols="4"><img
-                                                    src="https://static.wikia.nocookie.net/caramella-girls/images/9/99/Blankpfp.png"
-                                                    width="100%"></b-col>
-                                            <b-col xl="8" lg="8" md="8" sm="8" cols="8"><b>Nombre de Empresa</b><br>
-                                                <p>Santiago, Chile</p>
-                                            </b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <p>Prestigiosa empresa busca programador junior con 4 años de
-                                                    experiencia.
-                                                </p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">
-                                                <p>$350.000</p>
-                                            </b-col>
-                                            <b-col xl="6" lg="6" md="6" sm="6" cols="6">[Evaluación]</b-col>
-                                            <b-col xl="12" lg="12" md="12" sm="12" cols="12">
-                                                <kbd class="taghtml5">HTML5</kbd>
-                                                <kbd class="tagvuejs">VueJs</kbd>
-                                                <kbd class="tagjs">JavaScript</kbd>
-                                                <kbd class="tagfirebase">Firebase</kbd>
-                                                <kbd class="tagscss">SCSS</kbd>
-                                                <kbd class="tagithub">Github</kbd>
-                                            </b-col>
-                                        </b-row>
-                                        <footer style="padding: 10% 0% 0% 0%;">
-                                            <b-button variant="light" style="width: 100%;">Ver Oferta</b-button>
-                                        </footer>
-                                    </b-card>
-                                </b-collapse>
-                            </div>
-                            <div class="mt-5">
-                                <label>
-                                    <h3>Playlist de la semana</h3>
-                                </label>
-                                <div>
-                                    <iframe src="https://open.spotify.com/embed/playlist/1rEzcCeI7JC2SDEy7FycJL"
-                                        width="100%" height="330" frameborder="0" allowtransparency="true"
-                                        allow="encrypted-media"></iframe>
-                                </div>
-                            </div>
-                        </b-col>
-                        <!--FIN SLIDER-->
-                        <b-col xl="9" lg="8" md="12" sm="12" cols="12">
-                            <section>
-                                <div class="tituloBP">
-                                    <h1>[Usuario], estas son las ofertas laborales que hay para ti</h1>
-                                </div>
-                                <b-container class="buscador">
-                                    <!--Parte de buscadores y tag-->
-                                    <b-row>
-                                        <b-col xl="8" lg="8" md="8" sm="12" cols="12">
-                                            <h5>Filtrar por:</h5>
-                                            <a href="#"><kbd class="taghtml5">HTML5</kbd></a>
-                                            <a href="#"><kbd class="tagvuejs">VueJs</kbd></a>
-                                            <a href="#"><kbd class="tagjs">JavaScript</kbd></a>
-                                            <a href="#"><kbd class="tagfirebase">Firebase</kbd></a>
-                                            <a href="#"><kbd class="tagscss">SCSS</kbd></a>
-                                            <a href="#"><kbd class="tagithub">Github</kbd></a>
-                                        </b-col>
-                                        <b-col xl="4" lg="4" md="4" sm="12" cols="12">
-                                            <b-form inline class="formBuscador">
-                                                <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0"
-                                                    placeholder="Tema"></b-form-input>
-                                                <b-button variant="primary">Buscar</b-button>
-                                            </b-form>
-                                        </b-col>
-
-                                    </b-row>
-                                </b-container>
-                            </section>
-                            <section class="containerJob">
-                                <div class="cardsJobs">
-                                    <a href="pega.html" class="cardColor-1 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    
-                                    <a href="#" class="cardColor-2 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-3 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-4 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    
-                                    <a href="#" class="cardColor-5 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-6 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-7 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-8 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-9 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cardColor-0 cardBox">
-                                        <div class="cardBox__titulo">
-                                            <div class="cardBox_avatar">
-                                                <img src="https://cdn.icon-icons.com/icons2/206/PNG/64/Retro_Block_-_Question_(2)_24708.png" width="72px" height="75px">
-                                            </div>
-                                            <div>
-                                                <strong>[Nombre Empresa + icono verificado]</strong>
-                                                <h4 class="cardCargo">Ingeniero de Software</h4>
-                                                <span v-b-tooltip.hover title="El trabajo es 100% remoto, pero los candidatos deben residir en Chile para postular.">
-                                                    <b-icon-wifi></b-icon-wifi> Remoto - FullTime
-                                                </span>
-                                            </div>
-                                            <div class="cardExtra">
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                                <span v-b-tooltip.hover title="cosita" ><b-icon-wifi class="ml-3"></b-icon-wifi></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                            </section>
-                        </b-col>
-                    </b-row>
-                </b-container>
-            </div>
-        </template>
-
+        </div>
     </div>
 
-    <!-- Start running your app -->
-    <script>
-        window.app = new Vue({
-            el: '#app',
-            data: {
-                name: '',
-                img: false
-            },
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 
-            computed: {
-
-
-                cargarIMG() {
-                    return this.img = true;
-                },
-                nocargarIMG() {
-                    return this.img = false;
-                },
-            }
-        })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
     </script>
+    <!-- Optional JavaScript -->
+
 </body>
 
 </html>
