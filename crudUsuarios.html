@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div style="padding: 5%;">
+        <div style="padding: 5%; text-align: center;">
+            <h2><em>Agregar Usuario</em></h2>
+        </div>
+        <form id="formUsu">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Rol Usuario</label>
+                    <select class="form-control" name="perfilamiento" id="usu_rol">
+                      <option value="null">Seleccione Rol...</option>
+                      <option value="Administrador">Administrador</option>
+                      <option value="Alumno">Alumno</option>
+                      <option value="Ex Alumno">Ex Alumno</option>
+                      <option value="Academia">Academia</option>
+                      <option value="Empresa">Empresa</option>
+                      <option value="Invitado">Invitado</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label>Usuario</label>
+                      <input type="text" class="form-control" name="username" id="usu_username" aria-describedby="helpId" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label>Foto de Perfil</label>
+                      <input type="url" class="form-control" name="Foto de Perfil" id="usu_foto_perfil" aria-describedby="helpId" placeholder="URL Foto de Perfil">
+                    </div>
+                    <div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" class="form-control" name="nombre" id="usu_nombre" aria-describedby="helpId" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                      <label>Apellidos</label>
+                      <input type="text" class="form-control" name="apellidos" id="usu_apellido" aria-describedby="helpId" placeholder="Apellidos">
+                    </div>
+                    <div class="form-group">
+                      <label>Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" name="nacimiento" id="usu_fecha_nacimiento" aria-describedby="helpId" placeholder="Apellidos">
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" class="form-control" name="telefono" id="usu_telefono" aria-describedby="helpId" placeholder="Teléfono">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" id="usu_email" aria-describedby="helpId" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="text" class="form-control" name="contraseña" id="usu_contrasena" aria-describedby="helpId" placeholder="Contraseña">
+                  </div>
+                  <div class="form-group">
+                    <label>Generación</label>
+                    <input type="text" class="form-control" name="Generación" id="usu_gen" aria-describedby="helpId" placeholder="Generación">
+                  </div>
+                  <div class="form-group">
+                    <label>Área</label>
+                    <select class="form-control" name="areas" id="usu_area">
+                      <option value="null">Seleccione Área</option>
+                      <option value="Front-End">Front End</option>
+                      <option value="Back-End">Back End</option>
+                      <option value="UXUI">UX/UI</option>
+                      <option value="Full-Stack">Full Stack</option>
+                      <option value="Seguridad-Informatica">Seguridad Informática</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Situación Laboral</label>
+                    <select class="form-control" name="situacion laboral" id="usu_sit_laboral">
+                      <option value="null">Seleccione</option>
+                      <option value="buscando-empleo">Buscando Empleo</option>
+                      <option value="trabajando">Trabajando</option>
+                      <option value="freelancer">Freelancer</option>
+                    </select>
+                  </div>
+                  <button id="btn-accion" class="btn btn-primary btn-lg btn-block">Agregar</button>
+
+            </div>
+        </div>
+        </form>
+        
+
+          
+            
+    </div>
+
+
+         <table class="table">
+            <thead>
+                <tr>
+                    <th>Rol</th>
+                    <th>Usuario</th>
+                    <th>Foto de Perfil</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Generación</th>
+                    <th>Área</th>
+                    <th>Situación Laboral</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="contenedor_usuarios">
+            </tbody>
+        </table>
+
+
+   
+    
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="assets/js/crud_user.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    
+  </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
