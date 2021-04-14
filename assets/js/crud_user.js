@@ -73,8 +73,13 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                     <td>${usuarioData.usu_area}</td>
                     <td>${usuarioData.usu_sit_laboral}</td>
                     <td>
+<<<<<<< Updated upstream
                     <button type="button" class="btn btn-warning btn-delete" data-id="${doc.id}">Editar</button>
                     <button type="button" class="btn btn-danger btn-edit" data-id="${doc.id}">Borrar</button>
+=======
+                    <button type="button" class="btn btn-warning btn-edit" data-id="${doc.id}">Editar</button>
+                    <button type="button" class="btn btn-danger btn-delete" data-id="${doc.id}">Borrar</button>
+>>>>>>> Stashed changes
                     </td>
                 </tr>
                
@@ -82,7 +87,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             `;
         });
 
+<<<<<<< Updated upstream
         const btnDelete = contenedor_usuarios.querySelectorAll("btn-delete");
+=======
+        const btnDelete = contenedor_usuarios.querySelectorAll(".btn-delete");
+>>>>>>> Stashed changes
         btnDelete.forEach((btn) =>
             btn.addEventListener("click", async (e) => {
                 console.log(e.target.dataset.id);
@@ -94,7 +103,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             })
         );
 
+<<<<<<< Updated upstream
         const btnEdit = contenedor_usuarios.querySelectorAll("btn-edit");
+=======
+        const btnEdit = contenedor_usuarios.querySelectorAll(".btn-edit");
+>>>>>>> Stashed changes
         btnEdit.forEach((btn) => {
             btn.addEventListener("click", async (e) => {
                 try {
