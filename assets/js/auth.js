@@ -6,7 +6,8 @@ export const signIn = (email, password) => {
     .signInWithEmailAndPassword(email, password)
     .then(({ user }) => {
       console.log("Logeado exitosamente", user);
-      //this.$router.push("");
+      window.location.hash = '#/home'
+      //console.log(window.location.hash)
     })
     .catch((error) => {
       const errorCode = error.code;

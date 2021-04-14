@@ -1,40 +1,39 @@
 import { templateLogin } from './assets/view/templateLogin.js'
+import { templateHome } from './assets/view/templateHome.js'
 
 const changeRoute = (hash) => {
-    console.log(hash)
-    if (hash == '') {
-        return showTemplate(hash)
+    if (hash === '#/home') {
+        return showTemplate(hash);
+    } else if (hash === '') {
+        return showTemplate(hash);
     }
 }
 
 const showTemplate = (hash) => {
     const router = hash.substring(2);
-    const containerApp = document.getElementById('raiz');
-    containerApp.innerHTML = '';
+    //console.log(router)
+    const containerRoot = document.querySelector('#raiz');
+    containerRoot.innerHTML = '';
 
     switch (router) {
+
+        case 'home':
+            templateHome();
+            break;
+
         case '':
             templateLogin();
             break;
-    }
-}
-
-export const router = () => {
-    window.addEventListener('load', changeRoute(window.location.hash));
-    if ('onhashchange' in window) {
-        window.onchange = () => {
-            changeRoute(window.location.hash)
-        }
+        
+        default:
+            containerRoot.innerHTML = `<p>Error 404</p>`
     }
 }
 
 export const initRouter = () => {
-    //evento que carga la página, ya que la url cambia
     window.addEventListener('load', changeRoute(window.location.hash));
-    //Metodo que reconocer si hubo un cambio en el hash y le pasa ese nuevo hash a changeRouter
 
     if ('onhashchange' in window) {
-        //cuando reconoce un cambio de hash, llama a la función changeRoute para qur cambie la vista
         window.onhashchange = () => {
             changeRoute(window.location.hash);
         }
